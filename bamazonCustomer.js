@@ -53,6 +53,10 @@ var customerOrder = function(res) {
                         connection.query("UPDATE products SET stock_quantity='"+(res[id].stock_quantity-answer.quant)+"' WHERE product_name='"+product+"'", function(err,res2){
                             console.log("You purchased an item!");
                             displayProducts();
+
+                            // need to display purchased items and total cost
+                            var saleTotal = res[0].price * product[0].quantity;
+                            console.log(saleTotal);
                         })
                     } else {
                         console.log("Insufficient quantity!");
